@@ -1,13 +1,9 @@
 version: '3.8'
 
 services:
-  ollama:
-    image: ollama/ollama:latest
+  app:
+    build: .
     ports:
-      - "11434:11434"
-    environment:
-      - ENV_VAR=example
-    volumes:
-      - ./data:/var/lib/ollama
-      - ./entrypoint.sh:/entrypoint.sh
-    entrypoint: ["/entrypoint.sh"]
+      - 8080:8080
+    container_name: webmastapasta
+    restart: unless-stopped
